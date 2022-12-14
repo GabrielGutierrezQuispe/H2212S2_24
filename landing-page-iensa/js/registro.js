@@ -1,4 +1,4 @@
-const url = "http://localhost:3000/landing-page-iensa/index.html";
+const url = "http://34.203.128.23:3000/api/contactanos"; 
 let resultados = '';
 const formArticulo = document.querySelector("form");
 const nomcon = document.getElementById("NOMCON");
