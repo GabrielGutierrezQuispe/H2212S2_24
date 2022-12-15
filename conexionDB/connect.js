@@ -10,7 +10,7 @@ app.use(express.static(__dirname + '/'));
  
 //Verficar si esta informacion es correcta de acuerdo a tu localhost
 var conexion = mysql.createConnection({
-  host: "localhost",
+  host: "%",
   user: "gabriel",
   password: "root",
   database: "dbAlfonso"
