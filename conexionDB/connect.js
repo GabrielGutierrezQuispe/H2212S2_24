@@ -11,9 +11,9 @@ app.use(express.static(__dirname + '/'));
 //Verficar si esta informacion es correcta de acuerdo a tu localhost
 var conexion = mysql.createConnection({
   host: "localhost",
-  user: "esteban",
+  user: "gabriel",
   password: "root",
-  database: "dbAlfonsoUgarte"
+  database: "dbAlfonso"
 });
  
 //Verificar si la conexion a base de datos fue exitosa ,de lo contrario te devolvera un error
