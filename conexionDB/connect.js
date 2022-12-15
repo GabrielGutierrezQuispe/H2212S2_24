@@ -1,3 +1,4 @@
+//De acuerdo a lo que hemos instalado
 var express = require("express");
 var mysql = require("mysql");
 var app = express();
@@ -5,29 +6,34 @@ var cors = require("cors");
  
 app.use(express.json());
 app.use(cors());
-//Añadir el api
 app.use(express.static(__dirname + '/'));
-
+ 
+//Verficar si esta informacion es correcta de acuerdo a tu localhost
 var conexion = mysql.createConnection({
   host: "localhost",
-  user: "gabriel",
+  user: "esteban",
   password: "root",
-  database: "dbRestaurante",
+  database: "dbAlfonsoUgarte"
+});
+ 
+//Verificar si la conexion a base de datos fue exitosa ,de lo contrario te devolvera un error
+conexion.connect(function (error) {
+  if (error) {
+    console.log(error)
+    throw error;
+  } else {
+    console.log("Conexión exitosa");
+  }
 });
 
-conexion.connect(function (error) {
-    if (error) {
-      throw error;
-    } else {
-      console.log("Conexión exitosa");
-    }
-  });
 
-  const puerto = process.env.PUERTO || 3000;
-
+const puerto = process.env.PUERTO || 3000;
+ 
 app.listen(puerto, function () {
   console.log("Servidor funcionando en puerto: " + puerto);
 });
+
+//El contrato entre el servidor y el cliente para permitir la inserción de registros en la tabla
 
 app.post("/api/pedido", (req, res) => {
 	let data = {
@@ -37,6 +43,7 @@ app.post("/api/pedido", (req, res) => {
     	foodped: req.body.FOODPED,
     	msgped: req.body.MSGPED
 	};
+   //Insertamos los datos en tabla creada CONTACTANOS
 	let sql = "INSERT INTO pedido SET ?";
 	conexion.query(sql, data, function (error, results) {
   	if (error) {
